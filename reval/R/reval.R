@@ -928,11 +928,8 @@ check_float <- function(dataset, variable_name, format=NA, allow_na=FALSE){
     not_na_rows <- dataset %>% dplyr::filter(!na_ii);
     format <- unique(format);
     if(length(format)>1){
-        stop("Multiple formats specified during check float", format);
+        stop(sprintf("Multiple formats specified during check float (checking variable name %s)", variable_name), format);
     }
-    ## print("WHAT")
-    ## print(format)
-    ## print(length(format))
     
     int_ii <- if(format=="" || length(format)==0 || is.null(format) || is.na(format)){
                   addendum <- "";
