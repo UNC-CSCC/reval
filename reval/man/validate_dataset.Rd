@@ -6,7 +6,9 @@
 \usage{
 validate_dataset(
   filename,
-  combined_specs = function() {     reval::min_data_set_spec },
+  combined_specs = function() {
+     reval::min_data_set_spec
+ },
   write_report_to = FALSE
 )
 }
