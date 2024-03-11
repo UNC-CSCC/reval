@@ -1055,11 +1055,15 @@ check_iso8601_date <- function(dataset, variable_name, format=NULL, allow_na=FAL
 #' @export
 check_type <- function(dataset, variable_name, spec_type, format=NULL, allow_na=FALSE){
     if(length(unique(allow_na))!=1){
-        stop(sprintf("in check_type non-uniform allow_na %s", collapse_commas(allow_na)));
+        stop(sprintf("for variable name %s in check_type non-uniform allow_na %s",
+                     variable_name,
+                     collapse_commas(allow_na)));
     }
     allow_na <- if(unique(allow_na)=="Yes") { T } else { F };
     if(length(unique(spec_type))!=1){
-        stop(sprintf("in check_type non-uniform spec_type %s", collapse_commas(spec_type)));
+        stop(sprintf("for variable name %s in check_type non-uniform spec_type %s",
+                     variable_name,
+                     collapse_commas(spec_type)));
     }
     spec_type <- unique(spec_type);
 
