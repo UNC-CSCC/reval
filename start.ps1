@@ -39,12 +39,10 @@ docker build . --build-arg linux_user_pwd=$PASSWORD -t $CONTAINER_NAME
 
 Write-Output "Launching RStudio in container $CONTAINER_NAME on port $PORT..."
 docker run `
-       -p $PORT:8787 `
-       -v "$(pwd):/home/rstudio/work" `
-       --user rstudio `
-       --workdir /home/rstudio/work `
+       -p "8787:8787" `
+       --volume "$(Get-Location):/home/rstudio/work" `
        --hostname val-eng `
        -e PASSWORD="$PASSWORD" `
-       -it $CONTAINER_NAME
+       --interactive "$CONTAINER_NAME"
 
 Write-Output "The password for Rstudio is: $PASSWORD"
