@@ -1489,7 +1489,7 @@ merge_spec_files <- function(spec_directory, sheet_names=c("Study", "Datasets", 
                                           codelist_order=paste(order, collapse='::')),
                          by="codelist") %>%
         dplyr::mutate(dataset=stringr::str_to_upper(dataset)) %>%
-        dplyr::mutate(dataset=stringr::str_sub(dataset, 1, 2)) %>% dplyr::distinct() %>%
+        dplyr::distinct() %>%
         dplyr::mutate(format=fix_format(dplyr::coalesce(value_level_format, variable_format))) %>%
         tibble::as_tibble() %>%
         dplyr::mutate(codelist_order=str_split(codelist_order,'::'),
